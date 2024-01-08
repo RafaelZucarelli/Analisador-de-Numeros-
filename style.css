@@ -1,0 +1,30 @@
+body{
+    background: rgb(146, 146, 214);
+    font: normal 15pt Arial;
+}
+
+header{
+    color: white;
+    text-align: center; /* ALINHA TEXTO AO MEIO */
+}
+
+section{
+    background: white; /* Cor de fundo da seção */
+    border-radius: 10px; /* Borda arredondada na seção */
+    padding: 15px; /* Espaçamento interno na seção */
+    width: 500px; /* Largura da seção */
+    margin: auto; /* Centraliza a seção na tela */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.658); /* Sombra na seção */
+
+    /* Estilos adicionais para centralizar o conteúdo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+
+footer{
+    color: white;
+    text-align: center; /* ALINHA TEXTO AO MEIO */
+    font-style: italic;
+}
