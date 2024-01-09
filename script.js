@@ -1,25 +1,74 @@
-function adicionar (){
-    let fnum = document.getElementById('txtnum')
-    let tab = document.getElementById('seltab')
+let fnum = document.getElementById('txtnum')
+let tab = document.getElementById('seltab')
+let res = document.querySelector('div#res')
+let valores = []
 
-    if(fnum.value.length == 0 && fnum.value.length > 100) {
-        window.alert ('[ERRO] Por favor digite um número')
-        } else {
-        let n = Number(fnum.value)
-        let cont = 1
-    
-            let item = document.createElement('option')
-            item.text = `Valor ${n} adicionado.`
-            item.value = `tab${cont}`
-            tab.appendChild(item)       
+
+
+function isNumero(n) {
+    if (Number(n) >=1 && Number(n) <= 100) {
+        return true
+    } else {
+        return false
     }
 
-function finalizar (){
-    let elem = tab.length;
-    let maiorelem = Math.max(fnum)
-    let menorelem = Math.min(fnum)
-    let soma = 
+}
+function inTab (n, l) {
+    if(l.indexOf(Number(n)) != -1){
+        return true
+    } else {
+        return false
+    }
+} 
+
+
+
+function adicionar () {
+
+    
+
+    if(isNumero(fnum.value) && !inTab(fnum.value, valores)) {
+
+        valores.push(Number(fnum.value))
+        let item = document.createElement('option') 
+        item.text = `Valor ${fnum.value} adicionado.`
+        tab.appendChild(item)
+        
+
+     } else {
+        window.alert ('[ERRO] Valor inválido ou já encontrado na lista')   
+    }
+    fnum.value = ''
+    fnum.focus()
 }
 
+function finalizar () {
+    if (valores.length == 0) {
+        window.alert('Adicione valores antes de finalizar!')
+    } else {
 
+        let tot = valores.length
+        let maior = valores[0]
+        let menor = valores[0]
+        let soma = 0
+        let media = 0
+
+        for(let cont in valores) {
+            soma += valores[cont]
+            if (valores[cont] > maior )
+            maior = valores[cont]
+    
+            if (valores [cont] < menor)
+             menor = valores[cont]
+    
+    }
+
+        media = soma/tot 
+        res.innerHTML = ''
+        res.innerHTML += `<p>Ao todo temos ${tot} números cadastrados. <\p>`
+        res.innerHTML += `<p>O maior valor informado foi ${maior} . <\p>`
+        res.innerHTML += `<p>O menor valor informado foi ${menor} . <\p>`
+        res.innerHTML += `<p>A soma de todos os valores é: ${soma} . <\p>`
+        res.innerHTML += `<p>A média dos valores é: ${media} . <\p>`
+    }
 }
